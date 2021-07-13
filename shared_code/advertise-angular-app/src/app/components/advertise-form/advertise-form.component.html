@@ -1,0 +1,37 @@
+<form #advForm="ngForm" (ngSubmit)="addTDFAdvertise(advForm.value); advForm.resetForm();" novalidate>
+<div class="container">
+    <div class="col-md-4"><h3>OLX Advertise App</h3></div>
+    <div class="col-md-4 justify-content-md-center"></div>
+    <div class="form-group">
+         <label for="uname">Title:</label>
+         <input type="text" class="form-control" #title name="title" ngModel>
+   </div>
+   <div class="form-group">
+         <label for="name">Name:</label>
+         <input type="text" class="form-control" #name name="name" required minlength="3" #nameModelRef="ngModel" ngModel>
+         <div *ngIf="nameModelRef.errors && nameModelRef.touched">
+            <div [hidden]="!nameModelRef.errors.required" class="alert alert-danger">
+                Please enter the name
+            </div>
+            <div [hidden]="!nameModelRef.errors.minlength" class="alert alert-danger">
+                Min length is 3 characters
+            </div>
+        </div>
+   </div> 
+   <div class="form-group">
+        <label for="category">Category:</label>
+        <select for="categories" class="form-select" #category name="category" ngModel>
+            <option *ngFor="let category of categories">{{category}}</option>
+        </select>    
+    </div> 
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <input type="text" class="form-control" #description name="description" ngModel>
+    </div> 
+    <div class="form-group">
+        <button [disabled]="!advForm.form.valid" class="btn btn-success" type="submit">ADD</button>
+    </div>
+<div class="col-md-4"></div>
+
+</div>
+</form>

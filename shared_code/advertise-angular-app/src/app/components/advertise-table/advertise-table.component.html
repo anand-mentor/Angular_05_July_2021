@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="form-group">
+        <label for="searchText">Search:</label>
+        <input type="text" class="form-control" #searchText (keyup)="0">
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>TITLE</th>
+            <th>NAME</th>
+            <th>CATEGORY</th>
+            <th>DESCRIPTION</th>
+            <th>ACTIONS</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let advertise of advertises | searchadv:searchText.value">
+                <td>{{advertise.id}}</td>
+                <td>{{advertise.title}}</td>
+                <td>{{advertise.name}}</td>
+                <td>{{advertise.category}}</td>
+                <td>{{advertise.description}}</td>
+                <td>
+                    <input type='button' value='EDIT' (click)=editAdvertise(advertise.id)/>
+                    <input type='button' value='DELETE' (click)=deleteAdvertise(advertise.id)/>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

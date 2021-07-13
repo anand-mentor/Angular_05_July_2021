@@ -1,0 +1,32 @@
+<form [formGroup]="advForm">
+<div class="container">
+    <div class="col-md-4"><h3>OLX Advertise App</h3></div>
+    <div class="col-md-4 justify-content-md-center"></div>
+    <div class="form-group">
+         <label for="uname">Title:</label>
+         <input type="text" class="form-control" #title  formControlName="title">
+   </div>
+   <div class="form-group">
+         <label for="name">Name:</label>
+         <input type="text" class="form-control" #name formControlName="name">
+         <div *ngIf="advForm.controls['name'].hasError('required')" class="alert alert-danger">
+             Please enter name
+         </div>
+   </div> 
+   <div class="form-group">
+        <label for="category">Category:</label>
+        <select for="categories" class="form-select" #category formControlName="category">
+            <option *ngFor="let category of categories">{{category}}</option>
+        </select>    
+    </div> 
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <input type="text" class="form-control" #description formControlName="description">
+    </div> 
+    <div class="form-group">
+        <button class="btn btn-success" (click)="addAdvertise(title.value, name.value, category.value, description.value)">ADD</button>
+    </div>
+<div class="col-md-4"></div>
+
+</div>
+</form>

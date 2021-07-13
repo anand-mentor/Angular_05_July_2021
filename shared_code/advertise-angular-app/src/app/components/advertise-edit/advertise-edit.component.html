@@ -1,0 +1,36 @@
+<form #editForm="ngForm" (ngSubmit)="updateAdvertise(editForm.value)" novalidate>
+    <div class="container">
+        <div class="col-md-4"><h3>Update Advertise</h3></div>
+        <div class="col-md-4 justify-content-md-center"></div>
+        <div class="form-group">
+            <label for="id">Id:</label>
+            <input type="text" class="form-control" #id name="id" readonly [(ngModel)]="advertise.id">
+      </div>
+       <div class="form-group">
+             <label for="uname">Title:</label>
+             <input type="text" class="form-control" #title name="title" [(ngModel)]="advertise.title">
+       </div>
+       <div class="form-group">
+             <label for="name">Name:</label>
+             <input type="text" class="form-control" #name name="name" #nameModelRef="ngModel" [(ngModel)]="advertise.name" >
+       </div> 
+       <div class="form-group">
+            <label for="category">Category:</label>
+            <select for="categories" class="form-select" #category name="category" [(ngModel)]="advertise.category" >
+                <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+            </select>    
+        </div> 
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" class="form-control" #description name="description" [(ngModel)]="advertise.description" >
+        </div> 
+        <br/>
+        <div class="form-group">
+            <button [disabled]="!editForm.form.valid" class="btn btn-success" type="submit">UPDATE</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-success" type="button" (click)="cancelUpdate()">CANCEL</button>
+        </div>
+    <div class="col-md-4"></div>
+    
+    </div>
+    </form>
